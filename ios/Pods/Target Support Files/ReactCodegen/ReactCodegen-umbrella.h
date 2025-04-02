@@ -10,6 +10,8 @@
 #endif
 #endif
 
+#import "NativeEventSenderSpec/NativeEventSenderSpec.h"
+#import "NativeEventSenderSpecJSI.h"
 #import "RCTModulesConformingToProtocolsProvider.h"
 #import "RCTThirdPartyComponentsProvider.h"
 #import "react/renderer/components/RNVectorIconsSpec/ComponentDescriptors.h"

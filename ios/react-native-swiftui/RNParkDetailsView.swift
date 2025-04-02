@@ -7,9 +7,11 @@ import SwiftUI
 // SwiftUI wrapper around the React Native View Controller
 struct RNParkDetailsView: UIViewControllerRepresentable {
 	var park: Park
+	var isFavorite: Bool = false
+	var isFavoriteUpdated: (Bool) -> Void
 
 	func makeUIViewController(context: Context) -> ReactNativeViewController {
-		ReactNativeViewController(park: park)
+		ReactNativeViewController(park: park, isFavorite: isFavorite, isFavoriteUpdated: isFavoriteUpdated)
 	}
 
 	func updateUIViewController(_ uiViewController: ReactNativeViewController, context: Context) {}
@@ -17,12 +19,14 @@ struct RNParkDetailsView: UIViewControllerRepresentable {
 
 // ViewController that hosts the React Native view
 class ReactNativeViewController: UIViewController {
-	var reactNativeFactory: RCTReactNativeFactory?
-	var reactNativeFactoryDelegate: RCTReactNativeFactoryDelegate?
 	var park: Park?
+	var isFavorite: Bool = false
+	var isFavoriteUpdated: (Bool) -> Void
 
-	init(park: Park) {
+	init(park: Park, isFavorite: Bool = false, isFavoriteUpdated: @escaping (Bool) -> Void) {
 		self.park = park
+		self.isFavorite = isFavorite
+		self.isFavoriteUpdated = isFavoriteUpdated
 		super.init(nibName: nil, bundle: nil)
 	}
 	
@@ -32,27 +36,20 @@ class ReactNativeViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		reactNativeFactoryDelegate = ReactNativeDelegate()
-		reactNativeFactory = RCTReactNativeFactory(delegate: reactNativeFactoryDelegate!)
-		reactNativeFactoryDelegate?.dependencyProvider = RCTAppDependencyProvider()
-		view = reactNativeFactory!.rootViewFactory.view(
-			withModuleName: "react-native-swiftui",
-			initialProperties: park?.toDictionary()
+		var initalProps = park?.toDictionary()
+		initalProps?["isFavorite"] = isFavorite
+
+		view = RnBridgeManager.shared.createView(
+			moduleName: "react-native-swiftui",
+			initialProperties: initalProps
 		)
-	}
-}
 
-class ReactNativeDelegate: RCTDefaultReactNativeFactoryDelegate {
-	override func sourceURL(for bridge: RCTBridge) -> URL? {
-		self.bundleURL()
+		NotificationCenter.default.addObserver(self, selector: #selector(onFavoriteUpdated(notification:)), name: .init("parkFavoriteChanged"), object: nil)
 	}
 
-	override func bundleURL() -> URL? {
-#if DEBUG
-		RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index")
-#else
-		Bundle.main.url(forResource: "main", withExtension: "jsbundle")
-#endif
+	@objc func onFavoriteUpdated(notification: Notification) {
+		guard let isFavorite = notification.userInfo?["isFavorite"] as? Bool else { return }
+		isFavoriteUpdated(isFavorite)
 	}
 }
 

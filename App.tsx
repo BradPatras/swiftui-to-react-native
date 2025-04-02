@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Image,
   SafeAreaView,
@@ -8,14 +8,13 @@ import {
   Text,
   useColorScheme,
   View,
+  Button,
 } from "react-native";
 import {
   Colors,
-  DebugInstructions,
-  Header,
-  ReloadInstructions,
 } from "react-native/Libraries/NewAppScreen";
 import FontAwesome6 from '@react-native-vector-icons/fontawesome6';
+import NativeEventSender from './specs/NativeEventSender';
 
 type AppProps = {
   id: number;
@@ -25,14 +24,27 @@ type AppProps = {
   name?: string;
   location?: string;
   description?: string;
+  isFavorite?: boolean;
 };
 
 function App(props: AppProps): React.JSX.Element {
   const isDarkMode = useColorScheme() === "dark";
+  const [isFavorite, setIsFavorite] = useState(props.isFavorite || false);
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
+
+  function toggleIsFavorite() {
+    const newFavoriteStatus = !isFavorite;
+    setIsFavorite(newFavoriteStatus);
+
+    // Notify the native side about the change
+    NativeEventSender.sendEvent(
+      "parkFavoriteChanged",
+      JSON.stringify({ parkId: props.id, isFavorite: newFavoriteStatus })
+    );
+  }
 
   return (
     <SafeAreaView style={backgroundStyle}>
@@ -58,11 +70,21 @@ function App(props: AppProps): React.JSX.Element {
             padding: 10,
           }}
         >
-          <Text style={{fontSize: 12, fontWeight: "400", flex: 1}}>est {props.established}</Text>
-          <Text style={{fontSize: 12, fontWeight: "400", marginRight: 8}}>{props.location}</Text>
-          <FontAwesome6 name="location-arrow" iconStyle="solid"/>
+          <Text style={{ fontSize: 12, fontWeight: "400", flex: 1 }}>
+            est {props.established}
+          </Text>
+          <Text style={{ fontSize: 12, fontWeight: "400", marginRight: 8 }}>
+            {props.location}
+          </Text>
+          <FontAwesome6 name="location-arrow" iconStyle="solid" />
         </View>
-        <Text style={{ padding: 10, marginTop: 20, fontSize: 16}}>{props.description}</Text>
+        <Text style={{ padding: 10, marginTop: 20, fontSize: 16 }}>
+          {props.description}
+        </Text>
+        <Button
+          title={isFavorite ? "Remove from Favorites" : "Add to Favorites"}
+          onPress={toggleIsFavorite}
+        />
       </ScrollView>
     </SafeAreaView>
   );
