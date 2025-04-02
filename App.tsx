@@ -71,7 +71,7 @@ function App(props: AppProps): React.JSX.Element {
           }}
         >
           <Text style={{ fontSize: 12, fontWeight: "400", flex: 1 }}>
-            est {props.established}
+            est. {props.established}
           </Text>
           <Text style={{ fontSize: 12, fontWeight: "400", marginRight: 8 }}>
             {props.location}
