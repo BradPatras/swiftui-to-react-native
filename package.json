@@ -11,10 +11,15 @@
   },
   "codegenConfig": {
     "name": "NativeEventSenderSpec",
-    "type": "modules",
+    "type": "all",
     "jsSrcsDir": "specs",
     "android": {
       "javaPackageName": "com.nativeeventsender"
+    },
+    "ios": {
+      "componentProvider": {
+        "FavoriteButton": "RCTFavoriteButton"
+      }
     }
   },
   "dependencies": {

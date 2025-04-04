@@ -46,6 +46,7 @@
     "name": "Generate Specs",
     "execution_position": "before_compile",
     "input_files": [
+      "${PODS_ROOT}/../../specs/FavoriteButtonNativeComponent.ts",
       "${PODS_ROOT}/../../specs/NativeEventSender.ts"
     ],
     "show_env_vars_in_log": true,

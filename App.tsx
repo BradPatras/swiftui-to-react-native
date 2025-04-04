@@ -15,7 +15,7 @@ import {
 } from "react-native/Libraries/NewAppScreen";
 import FontAwesome6 from '@react-native-vector-icons/fontawesome6';
 import NativeEventSender from './specs/NativeEventSender';
-
+import FavoriteButton from './specs/FavoriteButtonNativeComponent';
 type AppProps = {
   id: number;
   imageUrl?: string;
@@ -35,14 +35,13 @@ function App(props: AppProps): React.JSX.Element {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
-  function toggleIsFavorite() {
-    const newFavoriteStatus = !isFavorite;
-    setIsFavorite(newFavoriteStatus);
+  function toggleIsFavorite(isFavorite: boolean) {
+    setIsFavorite(isFavorite);
 
     // Notify the native side about the change
     NativeEventSender.sendEvent(
       "parkFavoriteChanged",
-      JSON.stringify({ parkId: props.id, isFavorite: newFavoriteStatus })
+      JSON.stringify({ parkId: props.id, isFavorite: isFavorite })
     );
   }
 
@@ -81,10 +80,17 @@ function App(props: AppProps): React.JSX.Element {
         <Text style={{ padding: 10, marginTop: 20, fontSize: 16 }}>
           {props.description}
         </Text>
-        <Button
+        {/* <Button
           title={isFavorite ? "Remove from Favorites" : "Add to Favorites"}
           onPress={toggleIsFavorite}
-        />
+        /> */}
+        <FavoriteButton
+          // isFavorite={isFavorite}
+          // onFavoriteTapped={(event) => {
+          //   const newFavoriteStatus = !event.nativeEvent.isFavorite;
+          //   toggleIsFavorite(newFavoriteStatus);
+          // }}
+          />
       </ScrollView>
     </SafeAreaView>
   );

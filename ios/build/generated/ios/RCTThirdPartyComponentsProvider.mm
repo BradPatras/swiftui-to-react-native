@@ -16,7 +16,7 @@
 + (NSDictionary<NSString *, Class<RCTComponentViewProtocol>> *)thirdPartyFabricComponents
 {
   return @{
-
+		@"FavoriteButton": NSClassFromString(@"RCTFavoriteButton"), // react-native-swiftui
   };
 }
 
