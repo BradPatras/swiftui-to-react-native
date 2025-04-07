@@ -10,7 +10,7 @@
 		25C52BFA593A5EC34214A9B3 /* libPods-react-native-swiftui.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8135C2043DB377FCFAA4C769 /* libPods-react-native-swiftui.a */; };
 		6D84419364975D559A1CB8F5 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = FE7EF8B47DD8E85BF4774605 /* PrivacyInfo.xcprivacy */; };
 		8C0503222D9DB5470021EEB2 /* BTNativeEventSender.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8C0503212D9DB5470021EEB2 /* BTNativeEventSender.mm */; };
-		8CCBE5062DA055070012EACB /* RTCFavoriteButton.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8CCBE5052DA055070012EACB /* RTCFavoriteButton.mm */; };
+		8CCBE5062DA055070012EACB /* RCTFavoriteButton.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8CCBE5052DA055070012EACB /* RCTFavoriteButton.mm */; };
 		8CCBE5E22DA07D480012EACB /* ABAnimatedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCBE53F2DA05C160012EACB /* ABAnimatedButton.m */; };
 /* End PBXBuildFile section */
 
@@ -39,8 +39,8 @@
 		8C8CA5A62D676B30004E489F /* react-native-swiftui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "react-native-swiftui.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C8CA5B62D676B33004E489F /* react-native-swiftuiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "react-native-swiftuiTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C8CA5C02D676B33004E489F /* react-native-swiftuiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "react-native-swiftuiUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8CCBE5042DA055070012EACB /* RTCFavoriteButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RTCFavoriteButton.h; sourceTree = "<group>"; };
-		8CCBE5052DA055070012EACB /* RTCFavoriteButton.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RTCFavoriteButton.mm; sourceTree = "<group>"; };
+		8CCBE5042DA055070012EACB /* RCTFavoriteButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTFavoriteButton.h; sourceTree = "<group>"; };
+		8CCBE5052DA055070012EACB /* RCTFavoriteButton.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RCTFavoriteButton.mm; sourceTree = "<group>"; };
 		8CCBE53E2DA05C040012EACB /* ABAnimatedButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABAnimatedButton.h; sourceTree = "<group>"; };
 		8CCBE53F2DA05C160012EACB /* ABAnimatedButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABAnimatedButton.m; sourceTree = "<group>"; };
 		B640F79D40FCA1CE9C98C71B /* Pods-react-native-swiftui.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-react-native-swiftui.debug.xcconfig"; path = "Target Support Files/Pods-react-native-swiftui/Pods-react-native-swiftui.debug.xcconfig"; sourceTree = "<group>"; };
@@ -148,8 +148,8 @@
 		8CCBE5032DA053550012EACB /* RCTFavoriteButton */ = {
 			isa = PBXGroup;
 			children = (
-				8CCBE5042DA055070012EACB /* RTCFavoriteButton.h */,
-				8CCBE5052DA055070012EACB /* RTCFavoriteButton.mm */,
+				8CCBE5042DA055070012EACB /* RCTFavoriteButton.h */,
+				8CCBE5052DA055070012EACB /* RCTFavoriteButton.mm */,
 			);
 			path = RCTFavoriteButton;
 			sourceTree = "<group>";
@@ -402,7 +402,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CCBE5E22DA07D480012EACB /* ABAnimatedButton.m in Sources */,
-				8CCBE5062DA055070012EACB /* RTCFavoriteButton.mm in Sources */,
+				8CCBE5062DA055070012EACB /* RCTFavoriteButton.mm in Sources */,
 				8C0503222D9DB5470021EEB2 /* BTNativeEventSender.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

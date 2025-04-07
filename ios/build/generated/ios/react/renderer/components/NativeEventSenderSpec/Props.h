@@ -21,7 +21,7 @@ class FavoriteButtonProps final : public ViewProps {
 
 #pragma mark - Props
 
-  
+  bool isFavorite{false};
 };
 
 } // namespace facebook::react

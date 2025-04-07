@@ -5,7 +5,7 @@
 //  Created by Brad Patras on 4/4/25.
 //
 
-#import "RTCFavoriteButton.h"
+#import "RCTFavoriteButton.h"
 #import "ABAnimatedButton.h"
 #import <react/renderer/components/NativeEventSenderSpec/ComponentDescriptors.h>
 #import <react/renderer/components/NativeEventSenderSpec/EventEmitters.h>
@@ -14,10 +14,10 @@
 
 using namespace facebook::react;
 
-@interface RTCFavoriteButton () <RCTFavoriteButtonViewProtocol>
+@interface RCTFavoriteButton () <RCTFavoriteButtonViewProtocol>
 @end
 
-@implementation RTCFavoriteButton {
+@implementation RCTFavoriteButton {
 	BOOL _isFavorite;
 	ABAnimatedButton * _button;
 }
@@ -38,20 +38,19 @@ using namespace facebook::react;
 
 - (void)onPress
 {
-//	self.eventEmitter.onFavoriteTapped(FavoriteButtonEventEmitter::OnFavoriteTapped(_isFavorite));
+	self.eventEmitter.onFavoriteTapped(FavoriteButtonEventEmitter::OnFavoriteTapped(_isFavorite));
 }
 
-//- (const FavoriteButtonEventEmitter &)eventEmitter
-//{
-//	return static_cast<const FavoriteButtonEventEmitter &>(*_eventEmitter);
-//}
-
+- (const FavoriteButtonEventEmitter &)eventEmitter
+{
+	return static_cast<const FavoriteButtonEventEmitter &>(*_eventEmitter);
+}
 
 - (void)updateButton:(BOOL)isFavorite
 {
 	if (_isFavorite) {
 		_button.backgroundColor = [UIColor clearColor];
-		[_button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+		[_button setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 		[_button setTitle:@"Remove from favorites" forState:UIControlStateNormal];
 	} else {
 		_button.backgroundColor = [[UIColor magentaColor] colorWithProminence: UIColorProminenceSecondary];
@@ -60,24 +59,29 @@ using namespace facebook::react;
 	}
 }
 
-//- (void)updateProps:(Props::Shared const &)props oldProps:(Props::Shared const &)oldProps
-//{
-//	const auto &oldViewProps = *std::static_pointer_cast<FavoriteButtonProps const>(_props);
-//	const auto &newViewProps = *std::static_pointer_cast<FavoriteButtonProps const>(props);
-//
-//	// Handle your props here
-//	if (newViewProps.isFavorite != oldViewProps.isFavorite) {
-//		_isFavorite = newViewProps.isFavorite;
-//		[self updateButton:_isFavorite];
-//	}
-//
-//	[super updateProps:props oldProps:oldProps];
-//}
+- (void)updateProps:(Props::Shared const &)props oldProps:(Props::Shared const &)oldProps
+{
+	const auto &oldViewProps = *std::static_pointer_cast<FavoriteButtonProps const>(_props);
+	const auto &newViewProps = *std::static_pointer_cast<FavoriteButtonProps const>(props);
+
+	// Handle your props here
+	if (newViewProps.isFavorite != oldViewProps.isFavorite) {
+		_isFavorite = newViewProps.isFavorite;
+		[self updateButton:_isFavorite];
+	}
+
+	[super updateProps:props oldProps:oldProps];
+}
 
 -(void)layoutSubviews
 {
 	[super layoutSubviews];
 	_button.frame = self.bounds;
+}
+
++ (ComponentDescriptorProvider)componentDescriptorProvider
+{
+	return concreteComponentDescriptorProvider<FavoriteButtonComponentDescriptor>();
 }
 
 @end

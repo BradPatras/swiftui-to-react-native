@@ -80,17 +80,23 @@ function App(props: AppProps): React.JSX.Element {
         <Text style={{ padding: 10, marginTop: 20, fontSize: 16 }}>
           {props.description}
         </Text>
-        {/* <Button
-          title={isFavorite ? "Remove from Favorites" : "Add to Favorites"}
-          onPress={toggleIsFavorite}
-        /> */}
-        <FavoriteButton
-          // isFavorite={isFavorite}
-          // onFavoriteTapped={(event) => {
-          //   const newFavoriteStatus = !event.nativeEvent.isFavorite;
-          //   toggleIsFavorite(newFavoriteStatus);
-          // }}
+
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-around",
+            alignItems: "center",
+            padding: 10,
+          }}>
+          <FavoriteButton
+            style={{ height: 40, width: 200, justifyContent: 'space-around' }}
+            isFavorite={isFavorite}
+            onFavoriteTapped={(event) => {
+              const newFavoriteStatus = !event.nativeEvent.isFavorite;
+              toggleIsFavorite(newFavoriteStatus);
+            }}
           />
+        </View>
       </ScrollView>
     </SafeAreaView>
   );

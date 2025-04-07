@@ -3,8 +3,8 @@ import type {BubblingEventHandler} from 'react-native/Libraries/Types/CodegenTyp
 import codegenNativeComponent from 'react-native/Libraries/Utilities/codegenNativeComponent';
 
 export interface NativeProps extends ViewProps {
-    // isFavorite: boolean;
-    // onFavoriteTapped?: BubblingEventHandler<{ isFavorite: boolean }> | null;
+    isFavorite: boolean;
+    onFavoriteTapped?: BubblingEventHandler<{ isFavorite: boolean }> | null;
 }
 
 export default codegenNativeComponent<NativeProps>(

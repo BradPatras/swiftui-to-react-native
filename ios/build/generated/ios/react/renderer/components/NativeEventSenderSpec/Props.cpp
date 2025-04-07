@@ -17,9 +17,9 @@ namespace facebook::react {
 FavoriteButtonProps::FavoriteButtonProps(
     const PropsParserContext &context,
     const FavoriteButtonProps &sourceProps,
-    const RawProps &rawProps): ViewProps(context, sourceProps, rawProps)
+    const RawProps &rawProps): ViewProps(context, sourceProps, rawProps),
 
-    
+    isFavorite(convertRawProp(context, rawProps, "isFavorite", sourceProps.isFavorite, {false}))
       {}
 
 } // namespace facebook::react

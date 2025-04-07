@@ -17,7 +17,9 @@ class FavoriteButtonEventEmitter : public ViewEventEmitter {
  public:
   using ViewEventEmitter::ViewEventEmitter;
 
-  
-  
+  struct OnFavoriteTapped {
+      bool isFavorite;
+    };
+  void onFavoriteTapped(OnFavoriteTapped value) const;
 };
 } // namespace facebook::react

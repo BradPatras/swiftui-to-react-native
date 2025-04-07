@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RTCFavoriteButton : RCTViewComponentView
+@interface RCTFavoriteButton : RCTViewComponentView
 
 @end
 

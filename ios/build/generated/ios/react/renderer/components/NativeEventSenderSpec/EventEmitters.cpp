@@ -13,4 +13,12 @@
 
 namespace facebook::react {
 
+void FavoriteButtonEventEmitter::onFavoriteTapped(OnFavoriteTapped $event) const {
+  dispatchEvent("favoriteTapped", [$event=std::move($event)](jsi::Runtime &runtime) {
+    auto $payload = jsi::Object(runtime);
+    $payload.setProperty(runtime, "isFavorite", $event.isFavorite);
+    return $payload;
+  });
+}
+
 } // namespace facebook::react
