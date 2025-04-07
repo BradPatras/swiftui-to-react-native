@@ -77,6 +77,8 @@ using namespace facebook::react;
 {
 	[super layoutSubviews];
 	_button.frame = self.bounds;
+	_button.layer.cornerRadius = self.bounds.size.height / 2;
+	_button.clipsToBounds = YES;
 }
 
 + (ComponentDescriptorProvider)componentDescriptorProvider
