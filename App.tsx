@@ -16,6 +16,8 @@ import {
 import FontAwesome6 from '@react-native-vector-icons/fontawesome6';
 import NativeEventSender from './specs/NativeEventSender';
 import FavoriteButton from './specs/FavoriteButtonNativeComponent';
+import ExpoEventSenderModule from './modules/expo-event-sender';
+import expoEventSender from "./modules/expo-event-sender";
 type AppProps = {
   id: number;
   imageUrl?: string;
@@ -37,7 +39,7 @@ function App(props: AppProps): React.JSX.Element {
 
   function toggleIsFavorite(isFavorite: boolean) {
     setIsFavorite(isFavorite);
-
+    expoEventSender.hello();
     // Notify the native side about the change
     NativeEventSender.sendEvent(
       "parkFavoriteChanged",
