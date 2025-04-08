@@ -44,7 +44,12 @@ class ReactNativeViewController: UIViewController {
 			initialProperties: initalProps
 		)
 
-		NotificationCenter.default.addObserver(self, selector: #selector(onFavoriteUpdated(notification:)), name: .init("parkFavoriteChanged"), object: nil)
+		NotificationCenter.default.addObserver(
+			self,
+			selector: #selector(onFavoriteUpdated(notification:)),
+			name: .init("parkFavoriteChanged"),
+			object: nil
+		)
 	}
 
 	@objc func onFavoriteUpdated(notification: Notification) {

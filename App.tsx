@@ -89,7 +89,7 @@ function App(props: AppProps): React.JSX.Element {
             padding: 10,
           }}>
           <FavoriteButton
-            style={{ height: 40, width: 200, justifyContent: 'space-around' }}
+            style={{ height: 40, width: 200 }}
             isFavorite={isFavorite}
             onFavoriteTapped={(event) => {
               const newFavoriteStatus = !event.nativeEvent.isFavorite;
