@@ -39,9 +39,8 @@ function App(props: AppProps): React.JSX.Element {
 
   function toggleIsFavorite(isFavorite: boolean) {
     setIsFavorite(isFavorite);
-    expoEventSender.hello();
     // Notify the native side about the change
-    NativeEventSender.sendEvent(
+    expoEventSender.sendEvent(
       "parkFavoriteChanged",
       JSON.stringify({ parkId: props.id, isFavorite: isFavorite })
     );

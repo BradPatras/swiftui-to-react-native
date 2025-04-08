@@ -22,9 +22,8 @@ class ExpoEventSenderModule : Module() {
     // Defines event names that the module can send to JavaScript.
     Events("onChange")
 
-    // Defines a JavaScript synchronous function that runs the native code on the JavaScript thread.
-    Function("hello") {
-      "Hello world! 👋"
+    Function("sendEvent") { name: String, body: String ->
+      // do something
     }
 
     // Defines a JavaScript function that always returns a Promise and whose native code

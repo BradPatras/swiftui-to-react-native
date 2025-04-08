@@ -19,8 +19,14 @@ public class ExpoEventSenderModule: Module {
     Events("onChange")
 
     // Defines a JavaScript synchronous function that runs the native code on the JavaScript thread.
-    Function("hello") {
-      return "Hello world! 👋"
+    Function("sendEvent") { (name: String, body: String) in
+	    guard let data = body.data(using: .utf8),
+            let dict = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
+          print("Failed to decode JSON string into [String: Any]")
+          return
+      }
+
+      NotificationCenter.default.post(name: Notification.Name(name), object: nil, userInfo: dict)
     }
 
     // Defines a JavaScript function that always returns a Promise and whose native code

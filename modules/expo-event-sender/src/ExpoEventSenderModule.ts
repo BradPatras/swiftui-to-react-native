@@ -4,7 +4,7 @@ import { ExpoEventSenderModuleEvents } from './ExpoEventSender.types';
 
 declare class ExpoEventSenderModule extends NativeModule<ExpoEventSenderModuleEvents> {
   PI: number;
-  hello(): string;
+  sendEvent(name: string, body: string): void;
   setValueAsync(value: string): Promise<void>;
 }
 
