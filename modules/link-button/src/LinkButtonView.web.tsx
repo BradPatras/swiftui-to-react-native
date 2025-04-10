@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { ExpoEventSenderViewProps } from './ExpoEventSender.types';
+import { LinkButtonViewProps } from './LinkButton.types';
 
-export default function ExpoEventSenderView(props: ExpoEventSenderViewProps) {
+export default function LinkButtonView(props: LinkButtonViewProps) {
   return (
     <div>
       <iframe

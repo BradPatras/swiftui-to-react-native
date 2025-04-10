@@ -16,8 +16,8 @@ import {
 import FontAwesome6 from '@react-native-vector-icons/fontawesome6';
 import NativeEventSender from './specs/NativeEventSender';
 import FavoriteButton from './specs/FavoriteButtonNativeComponent';
-import ExpoEventSenderModule from './modules/expo-event-sender';
-import expoEventSender from "./modules/expo-event-sender";
+import LinkButton from './modules/link-button/src/LinkButtonView';
+import ExpoEventSender from "./modules/expo-event-sender";
 type AppProps = {
   id: number;
   imageUrl?: string;
@@ -40,7 +40,7 @@ function App(props: AppProps): React.JSX.Element {
   function toggleIsFavorite(isFavorite: boolean) {
     setIsFavorite(isFavorite);
     // Notify the native side about the change
-    expoEventSender.sendEvent(
+    ExpoEventSender.sendEvent(
       "parkFavoriteChanged",
       JSON.stringify({ parkId: props.id, isFavorite: isFavorite })
     );
@@ -98,6 +98,20 @@ function App(props: AppProps): React.JSX.Element {
             }}
           />
         </View>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+            padding: 10,
+          }}>
+          <LinkButton
+            style={{ height: 40, flex: 1 }}
+            url="https://www.nps.gov/yose/index.htm"
+            title="View current conditions"
+          />
+        </View>
+
       </ScrollView>
     </SafeAreaView>
   );
