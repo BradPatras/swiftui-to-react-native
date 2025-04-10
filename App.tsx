@@ -39,11 +39,17 @@ function App(props: AppProps): React.JSX.Element {
 
   function toggleIsFavorite(isFavorite: boolean) {
     setIsFavorite(isFavorite);
-    // Notify the native side about the change
+    // Notify the native side about the change using expo module
     ExpoEventSender.sendEvent(
       "parkFavoriteChanged",
       JSON.stringify({ parkId: props.id, isFavorite: isFavorite })
     );
+
+    // Notify the native side about the change using turbo module
+    // NativeEventSender.sendEvent(
+    //   "parkFavoriteChanged",
+    //   JSON.stringify({ parkId: props.id, isFavorite: isFavorite })
+    // );
   }
 
   return (
