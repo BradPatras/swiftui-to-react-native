@@ -4,6 +4,7 @@ import React_RCTAppDelegate
 import ReactAppDependencyProvider
 import SwiftUI
 
+
 // SwiftUI wrapper around the React Native View Controller
 struct RNParkDetailsView: UIViewControllerRepresentable {
 	var park: Park

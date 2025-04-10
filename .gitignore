@@ -21,7 +21,7 @@ DerivedData
 *.xcuserstate
 project.xcworkspace
 **/.xcode.env.local
-
+/ios/Pods/
 # Gradle
 /build/
 /packages/rn-tester/build
