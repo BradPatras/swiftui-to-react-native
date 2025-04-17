@@ -27,7 +27,8 @@
     "@react-native-vector-icons/fontawesome6": "^6.7.1",
     "expo": "^52.0.44",
     "react": "19.0.0",
-    "react-native": "0.78.0"
+    "react-native": "0.78.0",
+    "native-event-sender": "file:TurboModules/NativeEventSender"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

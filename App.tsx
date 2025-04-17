@@ -14,8 +14,8 @@ import {
   Colors,
 } from "react-native/Libraries/NewAppScreen";
 import FontAwesome6 from '@react-native-vector-icons/fontawesome6';
-import NativeEventSender from './specs/NativeEventSender';
-import FavoriteButton from './specs/FavoriteButtonNativeComponent';
+// import FavoriteButton from './specs/FavoriteButtonNativeComponent';
+import NativeEventSender from 'native-event-sender';
 import LinkButton from './modules/link-button/src/LinkButtonView';
 import ExpoEventSender from "./modules/expo-event-sender";
 type AppProps = {
@@ -40,16 +40,16 @@ function App(props: AppProps): React.JSX.Element {
   function toggleIsFavorite(isFavorite: boolean) {
     setIsFavorite(isFavorite);
     // Notify the native side about the change using expo module
-    ExpoEventSender.sendEvent(
-      "parkFavoriteChanged",
-      JSON.stringify({ parkId: props.id, isFavorite: isFavorite })
-    );
-
-    // Notify the native side about the change using turbo module
-    // NativeEventSender.sendEvent(
+    // ExpoEventSender.sendEvent(
     //   "parkFavoriteChanged",
     //   JSON.stringify({ parkId: props.id, isFavorite: isFavorite })
     // );
+
+    // Notify the native side about the change using turbo module
+    NativeEventSender.sendEvent(
+      "parkFavoriteChanged",
+      JSON.stringify({ parkId: props.id, isFavorite: isFavorite })
+    );
   }
 
   return (
