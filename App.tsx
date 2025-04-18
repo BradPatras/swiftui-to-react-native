@@ -14,7 +14,7 @@ import {
   Colors,
 } from "react-native/Libraries/NewAppScreen";
 import FontAwesome6 from '@react-native-vector-icons/fontawesome6';
-// import FavoriteButton from './specs/FavoriteButtonNativeComponent';
+import FavoriteButton from './specs/FavoriteButtonNativeComponent';
 import NativeEventSender from 'native-event-sender';
 import LinkButton from './modules/link-button/src/LinkButtonView';
 import ExpoEventSender from "./modules/expo-event-sender";

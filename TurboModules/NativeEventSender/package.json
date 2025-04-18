@@ -2,6 +2,9 @@
   "name": "native-event-sender",
   "version": "0.0.1",
   "private": true,
+  "exports": {
+    ".": "./specs/NativeEventSender.ts"
+  },
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
